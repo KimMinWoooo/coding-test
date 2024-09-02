@@ -9,7 +9,7 @@ for _ in range(m):
     if len(commands) == 1:
         # all
         if commands[0] == "all":
-            S = set([i for i in range(1, 21)])
+            S = set(range(1, 21))
         # empty
         else:
             S = set()
