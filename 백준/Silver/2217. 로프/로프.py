@@ -1,8 +1,9 @@
-N = int(input())
+import sys
+N = int(sys.stdin.readline())
 m = []
 
 for i in range(N):
-    m.append(int(input()))
+    m.append(int(sys.stdin.readline()))
 
 m.sort(reverse=True)
 res = []
