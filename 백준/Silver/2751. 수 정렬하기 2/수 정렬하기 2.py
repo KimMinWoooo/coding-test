@@ -3,8 +3,8 @@ input = sys.stdin.readline
 N = int(input())
 a = []
 for i in range(N):
-    k = int(input())
-    a.append(k)
-a.sort(reverse=False)
-for j in a:
+    a.append(int(input()))
+
+for j in sorted(a):
     print(j)
+
