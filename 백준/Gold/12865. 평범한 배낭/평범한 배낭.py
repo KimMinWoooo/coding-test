@@ -1,5 +1,3 @@
-# 탑 바텀 dp로 푼 넵섹 문제
-
 import sys
 input = sys.stdin.readline
 
