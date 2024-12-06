@@ -1,16 +1,23 @@
-# 바텀 업 dp 넵섹 문제
+# 탑 바텀 dp로 푼 넵섹 문제
+
 import sys
 input = sys.stdin.readline
 
-N, K = map(int, input().split())
-item = []
-dp = [[0 for _ in range(K+1)] for _ in range(N+1)]
+def recur(idx, weight):
+    if weight > K:
+        return -99999999
+    if idx == N:
+        return 0
+    if dp[idx][weight] != -1:
+        return dp[idx][weight]
 
-for idx in range(1, N+1):
-    x, y = map(int, input().split())
-    for weight in range(1, K+1):
-        if weight < x:
-            dp[idx][weight] = dp[idx-1][weight]
-        else:
-            dp[idx][weight] = max(dp[idx-1][weight], dp[idx-1][weight-x] + y)
-print(dp[N][K])
+    dp[idx][weight] = max(recur(idx+1, weight + arr[idx][0])+ arr[idx][1], recur(idx+1, weight))
+
+    return dp[idx][weight]
+
+N, K = map(int, input().split())
+arr = [list(map(int, input().split())) for _ in range(N)]
+dp = [[-1 for _ in range(100_001)] for _ in range(N)]
+
+ans = recur(0, 0)
+print(ans)
