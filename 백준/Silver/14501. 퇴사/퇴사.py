@@ -1,20 +1,18 @@
+# 바텀 업 dp 
 
-def recur(idx, price):
-    global result
-    if idx > N: 
-        return
-    if idx > N-1:
-        
-        result = max(result, price)
-        return
-    
-    
-    recur(idx+inter[idx][0], price+inter[idx][1])
-    recur(idx+1, price)
+import sys
+input = sys.stdin.readline
 
-N = int(input())
+n = int(input())
+arr = [list(map(int, input().split())) for _ in range(n)]
 
-inter = [list(map(int, input().split())) for _ in range(N)]
-result = 0
-recur(0, 0)
-print(result)
+dp = [0 for _ in range(n+1)]
+
+for idx in range(n)[::-1]:
+    if idx + arr[idx][0] > n:
+        dp[idx] = dp[idx+1]
+    else:
+        dp[idx] = max(dp[idx + arr[idx][0]]+arr[idx][1], dp[idx+1])
+
+
+print(max(dp))
