@@ -1,3 +1,6 @@
+import sys
+sys.setrecursionlimit(10**6)
+
 def recur(y, x):
     if dp[y][x] != 0:
         return dp[y][x]
