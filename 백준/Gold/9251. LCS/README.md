@@ -20,6 +20,9 @@
 
 <p>예를 들어, ACAYKP와 CAPCAK의 LCS는 ACAK가 된다.</p>
 
+![lcs](https://github.com/user-attachments/assets/52515ffe-dd28-4798-8302-ee769033f88e)
+
+
 ### 입력 
 
  <p>첫째 줄과 둘째 줄에 두 문자열이 주어진다. 문자열은 알파벳 대문자로만 이루어져 있으며, 최대 1000글자로 이루어져 있다.</p>
