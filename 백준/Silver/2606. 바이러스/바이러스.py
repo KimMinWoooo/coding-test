@@ -1,4 +1,3 @@
-from collections import deque
 
 N = int(input())
 M = int(input())
@@ -10,17 +9,14 @@ for _ in range(M):
     gh[a].append(b)
     gh[b].append(a)
 
-q = deque()
-
-q.append(1)
-
-while len(q) > 0:
-    node = q.popleft() # 1
-    visited[node] = 1 # 1을 방문했다!
+def recur(node):
+    visited[node] = 1
 
     for next in gh[node]:
-        if visited[next] == 1: # 이미 방문했으면 지나감
+        if visited[next] == 1:
             continue
-        q.append(next) # 다음거 방문
+        recur(next)
 
-print(sum(visited) - 1)
+
+recur(1)
+print(sum(visited)-1)
