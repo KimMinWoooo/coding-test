@@ -1,35 +1,34 @@
 import sys
 from collections import deque
+input = sys.stdin.readline
 
-N,M,R = map(int, sys.stdin.readline().split())
-
+N, M, R = map(int, input().split())
 graph = [[] for _ in range(N+1)]
+visited = [False] * (N+1)
+result = [0] * (N+1)
+for _ in range(M):
+    u, v = map(int, input().split())
+    graph[u].append(v)
+    graph[v].append(u)
 
-# 입력받는 간선 정보 그래프화 시키기
-for i in range(M):
-    TL = list(map(int, sys.stdin.readline().split()))
-    graph[TL[0]].append(TL[1])
-    graph[TL[1]].append(TL[0])
-
-# 정렬
-for i in range(N+1):
+for i in range(1, N+1):
     graph[i].sort()
 
-# bfs
-def bfs(graph, R, visited):
-    queue=deque([R])
-    visited[R]=1
-    count=2
+q = deque()
+q.append(R)
+order = 1
+while len(q) > 0:
+    node = q.popleft()
+    visited[node] = True
+    result[node] = order
+    order += 1
+    for next in graph[node]:
+        if visited[next] == True:
+            continue
+        visited[next] = True
+        q.append(next)
 
-    while queue:
-        R = queue.popleft()
-        for i in graph[R]:
-            if visited[i] == 0:
-                queue.append(i)
-                visited[i]=count
-                count+=1
-# 정점 배열
-visited=[0]*(N+1)
-bfs(graph, R, visited)
-for i in visited[1::]:
-    print(i)
+
+
+for i in range(1, N+1):
+    print(result[i])
