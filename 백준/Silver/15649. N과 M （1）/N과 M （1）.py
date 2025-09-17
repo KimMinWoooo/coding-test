@@ -1,19 +1,14 @@
-def solution(number):
-    if number == M:
+def recur(num):
+    if num == m:
         print(*arr)
         return
-
-    for i in range(1, N+1):
-        if arr and arr[-1] == i:
-            continue
+    for i in range(1, n+1):
         if i in arr:
             continue
         arr.append(i)
-        solution(number + 1)
+        recur(num+1)
         arr.pop()
 
-
-N, M = map(int, input().split())
+n,m = map(int,input().split())
 arr = []
-
-solution(0)
+recur(0)
